@@ -13,7 +13,7 @@ export default {
       return await viewFingerprints(request, env);
     }
 
-    // Retorna erro 404 caso a rota não seja localizada
+    // Retorna um erro 404 caso a rota não seja reconhecida
     return new Response("Rota não encontrada", { status: 404 });
   }
 };
@@ -32,7 +32,7 @@ async function logFingerprint(request, env) {
   // Executa a query
   await stmt.bind(userAgent, ip).run();
 
-  // Retorna uma resposta e confirma o registro
+  // Retorna uma resposta confirmando o registro
   return new Response("Fingerprint registrado!", { status: 201 });
 }
 
@@ -40,8 +40,8 @@ async function viewFingerprints(request, env) {
   // Obtém o cabeçalho de autorização
   const authHeader = request.headers.get("Authorization");
 
-  // Define a senha esperada para acesso (idealmente, isso deveria ser armazenado de forma segura. Para futuras nelhorias utilizar autenticação com tokens dinâmicos.)
-  const expectedPassword = "meusupersegredoparaacesso";
+  // Define a senha esperada para acesso (idealmente, isso deveria ser armazenado de forma segura)
+  const expectedPassword = "testeworker";
   
   // Verifica se o token de autenticação está correto
   if (authHeader !== `Bearer ${expectedPassword}`) {
