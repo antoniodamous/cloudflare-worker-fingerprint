@@ -139,7 +139,7 @@ SELECT * FROM fingerprints;
 
 #### **Via Terminal:**
 ```
-curl -H "Authorization: Bearer meusupersegredoparaacesso" https://SEU-WORKER.workers.dev/view
+curl -H "Authorization: Bearer testworker" https://SEU-WORKER.workers.dev/view
 ```
 Será retornado um JSON com os registros armazenados
 
