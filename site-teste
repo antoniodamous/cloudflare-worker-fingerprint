@@ -1,0 +1,26 @@
+https://eletroservice.vercel.app/
+
+Incluído script: 
+
+<script src="https://fingerprint-test.antonio-damous.workers.dev/fingerprint.js"></script>
+
+Ao inspecionar a página o script /fingerprint.js apresenta JSON abaixo:
+
+async function sendFingerprint() {
+      const fingerprint = {
+        userAgent: navigator.userAgent,
+        platform: navigator.platform,
+        language: navigator.language,
+        screen: { width: screen.width, height: screen.height },
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        referrer: document.referrer
+      };
+
+      await fetch('/log', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(fingerprint)
+      });
+    }
+
+    sendFingerprint();
